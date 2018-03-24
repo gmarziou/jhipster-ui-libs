@@ -16,6 +16,12 @@ export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
 
+    brands: string[] = ['Audi', 'BMW', 'Fiat', 'Ford', 'Honda', 'Jaguar', 'Mercedes', 'Renault', 'Volvo', 'VW'];
+
+    filteredBrands: any[];
+
+    brand: string;
+
     constructor(
         private principal: Principal,
         private loginModalService: LoginModalService,
@@ -44,5 +50,15 @@ export class HomeComponent implements OnInit {
 
     login() {
         this.modalRef = this.loginModalService.open();
+    }
+
+    filterBrands(event) {
+        this.filteredBrands = [];
+        for (let i = 0; i < this.brands.length; i++) {
+            let brand = this.brands[i];
+            if (brand.toLowerCase().indexOf(event.query.toLowerCase()) === 0) {
+                this.filteredBrands.push(brand);
+            }
+        }
     }
 }

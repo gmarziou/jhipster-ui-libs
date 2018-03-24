@@ -5,9 +5,12 @@ import { TestuiSharedModule } from '../shared';
 
 import { HOME_ROUTE, HomeComponent } from './';
 
+import { AutoCompleteModule } from 'primeng/autocomplete';
+
 @NgModule({
     imports: [
         TestuiSharedModule,
+        AutoCompleteModule,
         RouterModule.forChild([ HOME_ROUTE ])
     ],
     declarations: [
