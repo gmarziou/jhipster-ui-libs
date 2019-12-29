@@ -14,6 +14,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;
   authSubscription?: Subscription;
 
+  brands: string[] = ['Audi', 'BMW', 'Fiat', 'Ford', 'Honda', 'Jaguar', 'Mercedes', 'Renault', 'Volvo', 'VW'];
+
+  filteredBrands: any[] | undefined;
+
+  brand: string | undefined;
+
   constructor(private accountService: AccountService, private loginModalService: LoginModalService) {}
 
   ngOnInit(): void {
@@ -31,6 +37,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.authSubscription) {
       this.authSubscription.unsubscribe();
+    }
+  }
+
+  filterBrands(event: any): void {
+    this.filteredBrands = [];
+    for (let i = 0; i < this.brands.length; i++) {
+      const brand = this.brands[i];
+      if (brand.toLowerCase().startsWith(event.query.toLowerCase())) {
+        this.filteredBrands.push(brand);
+      }
     }
   }
 }
