@@ -3,7 +3,6 @@
     "promptValues": {
       "packageName": "com.mycompany.myapp"
     },
-    "jhipsterVersion": "4.14.1",
     "baseName": "testui",
     "packageName": "com.mycompany.myapp",
     "packageFolder": "com/mycompany/myapp",
@@ -21,13 +20,21 @@
     "buildTool": "maven",
     "enableSocialSignIn": false,
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "9ffbc5a3565e146b277309d945c7cde78cfdf1c6",
+    "jwtSecretKey": "e3l5z9zqbUS/B/B7hy9CDIXfA6IFoOAhtHxpzaPbzlvD5g3JWSJUQGy/KceYqpO2bCGTRSJQmGHFNv9wAPSA9g==",
     "clientFramework": "angularX",
-    "useSass": false,
-    "clientPackageManager": "yarn",
+    "useSass": true,
+    "clientPackageManager": "npm",
     "applicationType": "monolith",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
-    "enableTranslation": false
+    "enableTranslation": false,
+    "jhipsterVersion": "6.6.0",
+    "embeddableLaunchScript": false,
+    "clientTheme": "none",
+    "creationTimestamp": 1577638428336,
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "blueprints": []
   }
 }

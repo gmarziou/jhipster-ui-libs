@@ -1,89 +1,30 @@
-import './vendor.ts';
-
-import { NgModule, Injector } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Ng2Webstorage, LocalStorageService, SessionStorageService  } from 'ngx-webstorage';
-import { JhiEventManager } from 'ng-jhipster';
 
-import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
-import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
-import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
-import { NotificationInterceptor } from './blocks/interceptor/notification.interceptor';
-import { TestuiSharedModule, UserRouteAccessService } from './shared';
-import { TestuiAppRoutingModule} from './app-routing.module';
+import './vendor';
+import { TestuiSharedModule } from 'app/shared/shared.module';
+import { TestuiCoreModule } from 'app/core/core.module';
+import { TestuiAppRoutingModule } from './app-routing.module';
 import { TestuiHomeModule } from './home/home.module';
-import { TestuiAdminModule } from './admin/admin.module';
-import { TestuiAccountModule } from './account/account.module';
 import { TestuiEntityModule } from './entities/entity.module';
-import { PaginationConfig } from './blocks/config/uib-pagination.config';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
-import {
-    JhiMainComponent,
-    NavbarComponent,
-    FooterComponent,
-    ProfileService,
-    PageRibbonComponent,
-    ErrorComponent
-} from './layouts';
+import { MainComponent } from './layouts/main/main.component';
+import { NavbarComponent } from './layouts/navbar/navbar.component';
+import { FooterComponent } from './layouts/footer/footer.component';
+import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
+import { ErrorComponent } from './layouts/error/error.component';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        TestuiAppRoutingModule,
-        Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
-        TestuiSharedModule,
-        TestuiHomeModule,
-        TestuiAdminModule,
-        TestuiAccountModule,
-        TestuiEntityModule,
-        // jhipster-needle-angular-add-module JHipster will add new module here
-    ],
-    declarations: [
-        JhiMainComponent,
-        NavbarComponent,
-        ErrorComponent,
-        PageRibbonComponent,
-        FooterComponent
-    ],
-    providers: [
-        ProfileService,
-        PaginationConfig,
-        UserRouteAccessService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthInterceptor,
-            multi: true,
-            deps: [
-                LocalStorageService,
-                SessionStorageService
-            ]
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthExpiredInterceptor,
-            multi: true,
-            deps: [
-                Injector
-            ]
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: ErrorHandlerInterceptor,
-            multi: true,
-            deps: [
-                JhiEventManager
-            ]
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: NotificationInterceptor,
-            multi: true,
-            deps: [
-                Injector
-            ]
-        }
-    ],
-    bootstrap: [ JhiMainComponent ]
+  imports: [
+    BrowserModule,
+    TestuiSharedModule,
+    TestuiCoreModule,
+    TestuiHomeModule,
+    // jhipster-needle-angular-add-module JHipster will add new module here
+    TestuiEntityModule,
+    TestuiAppRoutingModule
+  ],
+  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent],
+  bootstrap: [MainComponent]
 })
 export class TestuiAppModule {}
